@@ -2,7 +2,6 @@ plugins {
     id("idea")
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("dagger.hilt.android.plugin")
     id("kotlin-android")
     id("kotlin-kapt")
     id("kotlin-parcelize")
@@ -32,8 +31,6 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
 
-            buildConfigField("String", "API_BASE_URL", "\"https://dailycost.my.id/\"")
-
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -49,8 +46,6 @@ android {
         debug {
             isMinifyEnabled = false
             isDebuggable = true
-
-            buildConfigField("String", "API_BASE_URL", "\"https://dailycost.my.id/\"")
 
             kotlinOptions {
                 freeCompilerArgs += listOf(
@@ -137,32 +132,6 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
     kapt("androidx.lifecycle:lifecycle-common-java8:${extra["lifecycle_version"]}")
 
-    // Dependency Injection
-    implementation("com.google.dagger:hilt-android:2.48")
-    ksp("androidx.hilt:hilt-compiler:1.1.0-beta01")
-    ksp("com.google.dagger:hilt-compiler:2.48")
-    ksp("com.google.dagger:hilt-android-compiler:2.48")
-
-    // Room
-    implementation("androidx.room:room-runtime:2.5.2")
-    implementation("androidx.room:room-ktx:2.5.2")
-    kapt("androidx.room:room-compiler:2.5.2")
-
-    // Accompanist
-    implementation("com.google.accompanist:accompanist-pager:${extra["accompanist_version"]}")
-    implementation("com.google.accompanist:accompanist-adaptive:${extra["accompanist_version"]}")
-    implementation("com.google.accompanist:accompanist-placeholder:${extra["accompanist_version"]}")
-    implementation("com.google.accompanist:accompanist-navigation-material:${extra["accompanist_version"]}")
-    implementation("com.google.accompanist:accompanist-navigation-animation:${extra["accompanist_version"]}")
-    implementation("com.google.accompanist:accompanist-flowlayout:${extra["accompanist_version"]}")
-    implementation("com.google.accompanist:accompanist-permissions:${extra["accompanist_version"]}")
-    implementation("com.google.accompanist:accompanist-systemuicontroller:${extra["accompanist_version"]}")
-
-    // Networking
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.6.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.5.0")
-
     // Other
     implementation("com.google.code.gson:gson:2.10")
     implementation("com.jakewharton.timber:timber:5.0.1")
@@ -171,7 +140,6 @@ dependencies {
     implementation("commons-codec:commons-codec:1.16.0")
     implementation("commons-io:commons-io:2.11.0")
     implementation("androidx.test.ext:junit-ktx:1.1.5")
-
 
     // The following line is optional, as the core library is included indirectly by camera-camera2
     implementation("androidx.camera:camera-core:${camerax_version}")

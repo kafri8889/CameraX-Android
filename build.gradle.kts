@@ -8,7 +8,6 @@ buildscript {
         classpath("com.android.tools.build:gradle:8.2.0-beta06")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
         classpath("org.jetbrains.kotlin:kotlin-serialization:$kotlin_version")
-        classpath("com.google.dagger:hilt-android-gradle-plugin:2.48")
     }
 }
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
